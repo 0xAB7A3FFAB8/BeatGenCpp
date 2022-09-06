@@ -20,5 +20,5 @@ Currently generation is only mostly implemented for the v 2.x format (not includ
 
   -1.x support
   
-  Noodle or Mapping Extensions Support
+  -Noodle or Mapping Extensions Support
   
