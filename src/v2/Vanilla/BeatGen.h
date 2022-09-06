@@ -8,7 +8,7 @@
 #include <string>
 
 namespace BeatGen {
-    class BeatGenContainer {
+    class BeatGenContainer { //Container class for BeatGen Objects
         public:
             std::vector<BGOBJ::event> beatGenEvents;
             std::vector<BGOBJ::note> beatGenNotes;	
@@ -25,7 +25,7 @@ namespace BeatGen {
         root["_events"] = Json::arrayValue;
         root["_waypoints"] = Json::arrayValue;
 
-        for (int i = 0; i < BGC.beatGenNotes.size(); i++)
+        for (int i = 0; i < BGC.beatGenNotes.size(); i++) //appends Data from Note class to json
         {
             Json::Value note;
             note["_time"] = BGC.beatGenNotes[i].beat;
@@ -36,7 +36,7 @@ namespace BeatGen {
             root["_notes"].append(note);
         }
 
-        for (int i = 0; i < BGC.beatGenWalls.size(); i++)
+        for (int i = 0; i < BGC.beatGenWalls.size(); i++) //appends Data from Wall class to json
         {
             Json::Value wall;
             wall["_time"] = BGC.beatGenWalls[i].beat;
@@ -47,7 +47,7 @@ namespace BeatGen {
             root["_obstacles"].append(wall);
         }
 
-        for (int i = 0; i < BGC.beatGenEvents.size(); i++)
+        for (int i = 0; i < BGC.beatGenEvents.size(); i++) //appends Data from Event class to json
         {
             Json::Value event;
             event["_time"] = BGC.beatGenEvents[i].beat;
@@ -58,8 +58,8 @@ namespace BeatGen {
         }
 
         
-        Json::FastWriter fastwriter;
-        std::string message = fastwriter.write(root);
+        Json::FastWriter fastwriter; 
+        std::string message = fastwriter.write(root);   //Writes the Json to a string
         return message;
     }
 }

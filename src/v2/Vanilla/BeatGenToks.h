@@ -1,6 +1,13 @@
 #ifndef BEATGENTOKS_H_
 #define BEATGENTOKS_H_
 
+/*
+All tokens used by BeatGen
+These tokens are used to make the code more readable
+*/
+
+
+
 namespace BGToks {
     enum Direction {
         Up = 0,
