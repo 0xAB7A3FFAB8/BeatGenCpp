@@ -5,8 +5,6 @@
 #include "dist/json/json.h"
 #include "dist/jsoncpp.cpp"
 #include <vector>
-
-#include <iostream>
 #include <string>
 
 namespace BeatGen {
@@ -16,7 +14,7 @@ namespace BeatGen {
             std::vector<BGOBJ::note> beatGenNotes;	
             std::vector<BGOBJ::wall> beatGenWalls;
     };
-    inline void genJson(BeatGenContainer BGC)
+    inline std::string genJson(BeatGenContainer BGC)
     {
         Json::Value root;
         //root.append("_version");
@@ -62,7 +60,7 @@ namespace BeatGen {
         
         Json::FastWriter fastwriter;
         std::string message = fastwriter.write(root);
-        std::cout<<message<<std::endl;
+        return message;
     }
 }
 
