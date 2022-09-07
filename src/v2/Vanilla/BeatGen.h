@@ -2,7 +2,6 @@
 #define BEATGEN_H_
 
 #include "BeatGenOBJ.h"
-#include "dist/json/json.h"
 #include "dist/jsoncpp.cpp"
 #include <vector>
 #include <string>

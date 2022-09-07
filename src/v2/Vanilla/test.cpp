@@ -2,6 +2,8 @@
 #include "BeatGenToks.h" //token classes (for Readeble Code)
 #include "BeatGen.h" //container class and Json Generator
 #include <iostream>
+#include <string>
+#include <vector>
 
 
 int main()
