@@ -10,15 +10,13 @@ Currently generation is only mostly implemented for the v 2.x format (not includ
 
 ###### Defenetly:
 
+  -Noodle Support
+
   -v3.x support
-  
-  -v2.x sliders
-  
-  -info.dat generation
   
 ###### Maybe:
 
   -1.x support
   
-  -Noodle or Mapping Extensions Support
+  -Mapping Extensions Support
   
