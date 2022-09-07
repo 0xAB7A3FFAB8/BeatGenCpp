@@ -16,11 +16,11 @@ namespace BeatGen {
             std::vector<BGOBJ::slider> beatGenSliders;
             std::vector<BGOBJ::slider> beatGenAutoSliders;
     };
-    inline std::string genJson(BeatGenContainer BGC,bool FastWrite)
+    inline std::string genJson(BeatGenContainer BGC,std::string version,bool FastWrite)
     {
         Json::Value root;
         //root.append("_version");
-        root["_version"] = "2.6.0";
+        root["_version"] = version;
         root["_notes"] = Json::arrayValue;
         root["_sliders"] = Json::arrayValue;
         root["_obstacles"] = Json::arrayValue;
