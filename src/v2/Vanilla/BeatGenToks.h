@@ -9,6 +9,13 @@ These tokens are used to make the code more readable
 
 
 namespace BGToks {
+    namespace Slider {
+        enum Anchor{
+            Straight = 0,
+            Clockwise = 1,
+            CounterClockwise = 2
+        };
+    }
     enum Direction {
         Up = 0,
         Down = 1,

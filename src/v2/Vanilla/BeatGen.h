@@ -13,8 +13,10 @@ namespace BeatGen {
             std::vector<BGOBJ::event> beatGenEvents;
             std::vector<BGOBJ::note> beatGenNotes;	
             std::vector<BGOBJ::wall> beatGenWalls;
+            std::vector<BGOBJ::slider> beatGenSliders;
+            std::vector<BGOBJ::slider> beatGenAutoSliders;
     };
-    inline std::string genJson(BeatGenContainer BGC)
+    inline std::string genJson(BeatGenContainer BGC,bool FastWrite)
     {
         Json::Value root;
         //root.append("_version");
@@ -57,10 +59,64 @@ namespace BeatGen {
             root["_events"].append(event);
         }
 
+        for (int i = 0; i < BGC.beatGenSliders.size(); i++) {
+            Json::Value slider;
+            slider["_colorType"] = BGC.beatGenSliders[i].type;
+            slider["_headTime"] = BGC.beatGenSliders[i].sliderHead.beat;
+            slider["_tailTime"] = BGC.beatGenSliders[i].sliderTail.beat;
+            slider["_headLineIndex"] = BGC.beatGenSliders[i].sliderHead.x;
+            slider["_tailLineIndex"] = BGC.beatGenSliders[i].sliderTail.x;
+            slider["_headLineLayer"] = BGC.beatGenSliders[i].sliderHead.y;
+            slider["_tailLineLayer"] = BGC.beatGenSliders[i].sliderTail.y;
+            slider["_headDirection"] = BGC.beatGenSliders[i].sliderHead.direction;
+            slider["_tailDirection"] = BGC.beatGenSliders[i].sliderTail.direction;
+            slider["_headControlPointLengthMultiplier"] = BGC.beatGenSliders[i].sliderHead.controlPointLengthMultiplier;
+            slider["_tailControlPointLengthMultiplier"] = BGC.beatGenSliders[i].sliderTail.controlPointLengthMultiplier;
+            slider["_sliderMidAnchorMode"] = BGC.beatGenSliders[i].sliderMidAnchorMode;
+            root["_sliders"].append(slider);
+        }
         
-        Json::FastWriter fastwriter; 
-        std::string message = fastwriter.write(root);   //Writes the Json to a string
-        return message;
+        for (int i = 0; i < BGC.beatGenAutoSliders.size(); i++) {
+            Json::Value slider;
+            slider["_colorType"] = BGC.beatGenAutoSliders[i].type;
+            slider["_headTime"] = BGC.beatGenAutoSliders[i].sliderHead.beat;
+            slider["_tailTime"] = BGC.beatGenAutoSliders[i].sliderTail.beat;
+            slider["_headLineIndex"] = BGC.beatGenAutoSliders[i].sliderHead.x;
+            slider["_tailLineIndex"] = BGC.beatGenAutoSliders[i].sliderTail.x;
+            slider["_headLineLayer"] = BGC.beatGenAutoSliders[i].sliderHead.y;
+            slider["_tailLineLayer"] = BGC.beatGenAutoSliders[i].sliderTail.y;
+            slider["_headDirection"] = BGC.beatGenAutoSliders[i].sliderHead.direction;
+            slider["_tailDirection"] = BGC.beatGenAutoSliders[i].sliderTail.direction;
+            slider["_headControlPointLengthMultiplier"] = BGC.beatGenAutoSliders[i].sliderHead.controlPointLengthMultiplier;
+            slider["_tailControlPointLengthMultiplier"] = BGC.beatGenAutoSliders[i].sliderTail.controlPointLengthMultiplier;
+            slider["_sliderMidAnchorMode"] = BGC.beatGenAutoSliders[i].sliderMidAnchorMode;
+            
+            Json::Value head;
+            head["_time"] = BGC.beatGenAutoSliders[i].sliderHead.beat;
+            head["_lineIndex"] = BGC.beatGenAutoSliders[i].sliderHead.x;
+            head["_lineLayer"] = BGC.beatGenAutoSliders[i].sliderHead.y;
+            head["_type"] = BGC.beatGenAutoSliders[i].type;
+            head["_cutDirection"] = BGC.beatGenAutoSliders[i].sliderHead.direction;
+            root["_notes"].append(head);
+
+            Json::Value tail;
+            tail["_time"] = BGC.beatGenAutoSliders[i].sliderTail.beat;
+            tail["_lineIndex"] = BGC.beatGenAutoSliders[i].sliderTail.x;
+            tail["_lineLayer"] = BGC.beatGenAutoSliders[i].sliderTail.y;
+            tail["_type"] = BGC.beatGenAutoSliders[i].type;
+            tail["_cutDirection"] = BGC.beatGenAutoSliders[i].sliderTail.direction;
+            root["_notes"].append(tail);
+
+            root["_sliders"].append(slider);
+        }
+
+        if (FastWrite) {
+            Json::FastWriter writer;
+            return writer.write(root);
+        } else {
+            Json::StyledWriter writer;
+            return writer.write(root);
+        }
     }
 }
 

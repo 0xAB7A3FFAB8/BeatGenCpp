@@ -20,6 +20,18 @@ namespace BGOBJ {
         float valuef,beat;
         event(int type, int value, float valuef, float beat) : type(type), value(value), valuef(valuef), beat(beat) {};
     };
+    class sliderpart{ //Sliderpart class for Sliders
+        public:
+        int x,y,direction;
+        float controlPointLengthMultiplier, beat;
+        sliderpart(int x,int y, int direction,float controlPointLengthMultiplier,float beat): x(x), y(y), direction(direction), controlPointLengthMultiplier(controlPointLengthMultiplier), beat(beat) {};
+    };
+    class slider{
+        public:
+        int type,sliderMidAnchorMode;
+        BGOBJ::sliderpart sliderHead,sliderTail;
+        slider(int type, int sliderMidAnchorMode, BGOBJ::sliderpart sliderHead, BGOBJ::sliderpart sliderTail) : type(type), sliderMidAnchorMode(sliderMidAnchorMode), sliderHead(sliderHead), sliderTail(sliderTail) {};
+    };
 }
 
 #endif
