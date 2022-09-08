@@ -13,8 +13,8 @@ namespace BGOBJ {
     class rotationEvent {
         public:
         float beat,rotation;
-        bool early;
-        rotationEvent(float beat,float rotation, bool early):beat(beat),rotation(rotation),early(early){};
+        int early;
+        rotationEvent(float beat,float rotation, int early):beat(beat),rotation(rotation),early(early){};
     };
     class note{
         public:
@@ -72,8 +72,8 @@ namespace BGOBJ {
     class filter{
         public:
         int type,parameter1,parameter2;
-        bool reverse;
-        filter(int type, int parameter1, int parameter2, bool reverse) : type(type), parameter1(parameter1), parameter2(parameter2), reverse(reverse) {};
+        int reverse;
+        filter(int type, int parameter1, int parameter2, int reverse) : type(type), parameter1(parameter1), parameter2(parameter2), reverse(reverse) {};
     };
     class lightEventData{
         public:
