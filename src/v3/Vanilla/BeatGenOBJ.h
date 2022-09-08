@@ -58,10 +58,10 @@ namespace BGOBJ {
     };
     class burstSlider{
         public:
-        int type,segmentCount;
         float squish;
+        int type,segmentCount;
         BGOBJ::burstSliderpart sliderHead,sliderTail;
-        burstSlider(int type, int segmentCount, BGOBJ::burstSliderpart sliderHead, BGOBJ::burstSliderpart sliderTail) : type(type), segmentCount(segmentCount), squish(squish), sliderHead(sliderHead), sliderTail(sliderTail) {};
+        burstSlider(int type, int segmentCount, float squish, BGOBJ::burstSliderpart sliderHead, BGOBJ::burstSliderpart sliderTail) : type(type), segmentCount(segmentCount), squish(squish), sliderHead(sliderHead), sliderTail(sliderTail) {};
     };
     class basicEvent{ //BasicEvent class for BeatGen
         public:
@@ -114,7 +114,7 @@ namespace BGOBJ {
         float beat;
         int group;
        std::vector<BGOBJ::rotationEventBoxContainer> eventBoxes;
-        lightRotationEvent(float beatDistribution, int beatDistributionType, float rotationDistribution, int rotationDistributionType, int rotationDistributionAffectFirst, int axis, int reverseRotration, std::vector<BGOBJ::rotationEventData> eventData) : beat(beat), group(group), eventBoxes(eventBoxes) {};
+        lightRotationEvent(float beat, int group, std::vector<BGOBJ::rotationEventBoxContainer> eventBoxes) : beat(beat), group(group), eventBoxes(eventBoxes) {};
     };
 }
 
