@@ -25,7 +25,7 @@ namespace BeatGen {
     };
     inline std::string genJson(BeatGenContainer BGC,std::string version,bool FastWrite)
     {
-        return "";
+        return "This is not Implemented yet";
     }
 }
 
