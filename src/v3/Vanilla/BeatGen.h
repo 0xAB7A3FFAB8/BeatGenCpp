@@ -23,9 +23,18 @@ namespace BeatGen {
             bool nomalCompatible;
             BeatGenContainer(bool normalCompatible) : nomalCompatible(normalCompatible) {}
     };
-    inline std::string genJson(BeatGenContainer BGC,std::string version,bool FastWrite)
+    inline std::string genJson(BeatGenContainer BGC,std::string version,bool Styled)
     {
-        return "This is not Implemented yet";
+        Json::Value root;
+
+        if(!Styled){
+            Json::FastWriter writer;
+            return writer.write(root);
+        }else {
+            Json::StyledWriter writer;
+            return writer.write(root);
+        }
+        return "Something went wrong while generating the json";
     }
 }
 

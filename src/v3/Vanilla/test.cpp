@@ -1,7 +1,9 @@
 #include "BeatGenOBJ.h"
 #include "BeatGenToks.h"
+#include "BeatGen.h"
 
 int main() {
-    BeatGenOBJ::note(0,0,BGToks::Red,BGToks::Left,0,20);
+    BeatGen::BeatGenContainer BGC(true); // Create a BeatGenContainer
+    BGC.beatGenNotes.push_back(BGOBJ::note(1,2,1,BGToks::Up,0,69)); // Add a note to the BeatGenContainer
 }
 
