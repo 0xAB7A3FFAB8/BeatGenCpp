@@ -4,36 +4,36 @@
 #include <vector>
 
 namespace BGOBJ {
-    class bpmEvent {
+    class bpmEvent { //bpmEvent class
         public:
         float bpm, beat;
         bpmEvent(float bpm,float beat) :bpm(bpm), beat(beat) {};
 
     };
-    class rotationEvent {
+    class rotationEvent { //rotationEvent class
         public:
         float beat,rotation;
         int early;
         rotationEvent(float beat,float rotation, int early):beat(beat),rotation(rotation),early(early){};
     };
-    class note{
+    class note{ //note class
         public:
         float beat;
         int x,y,color,direction,angle_offset;
         note(int x,int y, int color, int direction,int angle_offset,float beat): x(x), y(y), color(color), direction(direction), angle_offset(angle_offset), beat(beat){};
     };
-    class bomb{
+    class bomb{ //bomb class
         public:
         int x,y;
         float beat;
         bomb(int x, int y, float beat) : x(x),y(y),beat(beat) {};
     };
-    class wall{
+    class wall{ //wall class
         int y,x,width,hight;
         float duration;
         wall(int y, int x, int width, int hight, float duration) : y(y),x(x),width(width),hight(hight),duration(duration) {};
     };
-    class colorBoostEvent{
+    class colorBoostEvent{ //colorBoostEvent class
         float beat;
         bool on;
         colorBoostEvent(float beat, bool on) : beat(beat), on(on) {};
@@ -44,19 +44,19 @@ namespace BGOBJ {
         float controlPointLengthMultiplier, beat;
         sliderpart(int x,int y, int direction,float controlPointLengthMultiplier,float beat): x(x), y(y), direction(direction), controlPointLengthMultiplier(controlPointLengthMultiplier), beat(beat) {};
     };
-    class slider{
+    class slider{ //Slider class
         public:
         int type,sliderMidAnchorMode;
         BGOBJ::sliderpart sliderHead,sliderTail;
         slider(int type, int sliderMidAnchorMode, BGOBJ::sliderpart sliderHead, BGOBJ::sliderpart sliderTail) : type(type), sliderMidAnchorMode(sliderMidAnchorMode), sliderHead(sliderHead), sliderTail(sliderTail) {};
     };
-    class burstSliderpart{ //Sliderpart class for Sliders
+    class burstSliderpart{ //BurstSliderpart class for Sliders
         public:
         int x,y,direction;
         float beat;
         burstSliderpart(int x,int y, int direction,float beat): x(x), y(y), direction(direction), beat(beat) {};
     };
-    class burstSlider{
+    class burstSlider{ //BurstSlider class
         public:
         float squish;
         int type,segmentCount;
@@ -69,19 +69,19 @@ namespace BGOBJ {
         float valuef,beat;
         basicEvent(int type, int value, float valuef, float beat) : type(type), value(value), valuef(valuef), beat(beat) {};
     };
-    class filter{
+    class filter{ //Filter class for lightEventBox
         public:
         int type,parameter1,parameter2;
         int reverse;
         filter(int type, int parameter1, int parameter2, int reverse) : type(type), parameter1(parameter1), parameter2(parameter2), reverse(reverse) {};
     };
-    class lightEventData{
+    class lightEventData{ //LightEventData class for lightEventBox
         public:
         float addedBeat,brightness;
         int transition,color,flickerFrequency;
         lightEventData(float addedBeat, float brightness, int transition, int color, int flickerFrequency) : addedBeat(addedBeat), brightness(brightness), transition(transition), color(color), flickerFrequency(flickerFrequency) {};
     };
-    class lightEventBoxContainer{ //Event class for BeatGen
+    class lightEventBoxContainer{ //LightEventBoxContainer class for lightColorEvent
         public:
         float beatDistribution,brigthnessDistribution;
         int beatDistributionType,brigthnessDistributionType,brigthnessDistributionAffectFirst;
@@ -89,27 +89,27 @@ namespace BGOBJ {
         std::vector<BGOBJ::lightEventData> eventData;
         lightEventBoxContainer(float beatDistribution, int beatDistributionType, float brigthnessDistribution, int brigthnessDistributionType, int brigthnessDistributionAffectFirst, BGOBJ::filter filter, std::vector<BGOBJ::lightEventData> eventData) : beatDistribution(beatDistribution), brigthnessDistribution(brigthnessDistribution), beatDistributionType(beatDistributionType), brigthnessDistributionType(brigthnessDistributionType), brigthnessDistributionAffectFirst(brigthnessDistributionAffectFirst), filter(filter), eventData(eventData) {};
     };
-    class lightColorEvent{
+    class lightColorEvent{ //LightColorEvent class
         public:
         float beat;
         int group;
         std::vector<BGOBJ::lightEventBoxContainer> eventBoxes;
         lightColorEvent(float beat, int group, std::vector<BGOBJ::lightEventBoxContainer> eventBoxes) : beat(beat), group(group), eventBoxes(eventBoxes) {};
     };
-    class rotationEventData{
+    class rotationEventData{ //RotationEventData class for rotationEvent
         public:
         float beat;
         int transition,rotation,ease,loops,direction;
         rotationEventData(float beat, int transition, int rotation, int ease, int loops, int direction) : beat(beat), transition(transition), rotation(rotation), ease(ease), loops(loops), direction(direction) {};
     };
-    class rotationEventBoxContainer{ //Event class for BeatGen
+    class rotationEventBoxContainer{ //RotationEventBoxContainer class for rotationEvent
         public:
         float beatDistribution,rotationDistribution;
         int beatDistributionType,rotationDistributionType,rotationDistributionAffectFirst,axis,reverseRotration;
         std::vector<BGOBJ::rotationEventData> eventData;
         rotationEventBoxContainer(float beatDistribution, int beatDistributionType, float rotationDistribution, int rotationDistributionType, int rotationDistributionAffectFirst, int axis, int reverseRotration, std::vector<BGOBJ::rotationEventData> eventData) : beatDistribution(beatDistribution), rotationDistribution(rotationDistribution), beatDistributionType(beatDistributionType), rotationDistributionType(rotationDistributionType), rotationDistributionAffectFirst(rotationDistributionAffectFirst), axis(axis), reverseRotration(reverseRotration), eventData(eventData) {};
     };
-    class lightRotationEvent{
+    class lightRotationEvent{ //LightRotationEvent class
         public:
         float beat;
         int group;
