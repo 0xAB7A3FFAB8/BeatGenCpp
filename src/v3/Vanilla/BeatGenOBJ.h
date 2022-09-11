@@ -52,6 +52,14 @@ namespace BGOBJ {
         BGOBJ::sliderpart sliderHead,sliderTail;
         slider(int color, int sliderMidAnchorMode, BGOBJ::sliderpart sliderHead, BGOBJ::sliderpart sliderTail) : color(color), sliderMidAnchorMode(sliderMidAnchorMode), sliderHead(sliderHead), sliderTail(sliderTail) {};
     };
+
+    class autoSlider{ //autoSlider class
+        public:
+        int color,sliderMidAnchorMode;
+        BGOBJ::sliderpart sliderHead,sliderTail;
+        autoSlider(int color, int sliderMidAnchorMode, BGOBJ::sliderpart sliderHead, BGOBJ::sliderpart sliderTail) : color(color), sliderMidAnchorMode(sliderMidAnchorMode), sliderHead(sliderHead), sliderTail(sliderTail) {};
+    };
+
     class burstSliderpart{ //BurstSliderpart class for Sliders
         public:
         int x,y,direction;

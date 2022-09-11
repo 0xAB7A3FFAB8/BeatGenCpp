@@ -13,6 +13,7 @@ namespace BeatGen {
             std::vector<BGOBJ::note> beatGenNotes;	
             std::vector<BGOBJ::wall> beatGenWalls;
             std::vector<BGOBJ::slider> beatGenSliders;
+            std::vector<BGOBJ::autoSlider> beatGenAutoSliders;
             std::vector<BGOBJ::burstSlider> beatGenBurstSliders;
             std::vector<BGOBJ::bomb> beatGenBombs;
             std::vector<BGOBJ::bpmEvent> beatGenBpmEvents;
@@ -112,6 +113,39 @@ namespace BeatGen {
             slider["tmu"] = BGC.beatGenSliders[i].sliderTail.controlPointLengthMultiplier;
             slider["m"] = BGC.beatGenSliders[i].sliderMidAnchorMode;
             root["sliders"].append(slider);
+        }
+
+        for (int i = 0; i < BGC.beatGenAutoSliders.size(); i++) {
+            Json::Value slider;
+            slider["b"] = BGC.beatGenAutoSliders[i].sliderHead.beat;
+            slider["c"] = BGC.beatGenAutoSliders[i].color;
+            slider["x"] = BGC.beatGenAutoSliders[i].sliderHead.x;
+            slider["y"] = BGC.beatGenAutoSliders[i].sliderHead.y;
+            slider["d"] = BGC.beatGenAutoSliders[i].sliderHead.direction;
+            slider["mu"] = BGC.beatGenAutoSliders[i].sliderHead.controlPointLengthMultiplier;
+            slider["tb"] = BGC.beatGenAutoSliders[i].sliderTail.beat;
+            slider["tx"] = BGC.beatGenAutoSliders[i].sliderTail.x;
+            slider["ty"] = BGC.beatGenAutoSliders[i].sliderTail.y;
+            slider["tc"] = BGC.beatGenAutoSliders[i].sliderTail.direction;
+            slider["tmu"] = BGC.beatGenAutoSliders[i].sliderTail.controlPointLengthMultiplier;
+            slider["m"] = BGC.beatGenAutoSliders[i].sliderMidAnchorMode;
+            root["sliders"].append(slider);
+            Json::Value note;
+            note["b"] = BGC.beatGenAutoSliders[i].sliderHead.beat;
+            note["x"] = BGC.beatGenAutoSliders[i].sliderHead.x;
+            note["y"] = BGC.beatGenAutoSliders[i].sliderHead.y;
+            note["c"] = BGC.beatGenAutoSliders[i].color;
+            note["d"] = BGC.beatGenAutoSliders[i].sliderHead.direction;
+            note["a"] = 0;
+            root["colorNotes"].append(note);
+            Json::Value tailNote;
+            tailNote["b"] = BGC.beatGenAutoSliders[i].sliderTail.beat;
+            tailNote["x"] = BGC.beatGenAutoSliders[i].sliderTail.x;
+            tailNote["y"] = BGC.beatGenAutoSliders[i].sliderTail.y;
+            tailNote["c"] = BGC.beatGenAutoSliders[i].color;
+            tailNote["d"] = BGC.beatGenAutoSliders[i].sliderTail.direction;
+            tailNote["a"] = 0;
+            root["colorNotes"].append(tailNote);
         }
 
         for (int i = 0; i < BGC.beatGenBurstSliders.size(); i++) {
