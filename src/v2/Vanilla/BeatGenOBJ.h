@@ -1,6 +1,10 @@
 #ifndef BEATGENOBJ_H_
 #define BEATGENOBJ_H_
 
+#include <memory>
+#include <string>
+#include <vector>
+
 namespace BGOBJ {
     class note{ //Note class for BeatGen
         public:
@@ -31,6 +35,17 @@ namespace BGOBJ {
         int type,sliderMidAnchorMode;
         BGOBJ::sliderpart sliderHead,sliderTail;
         slider(int type, int sliderMidAnchorMode, BGOBJ::sliderpart sliderHead, BGOBJ::sliderpart sliderTail) : type(type), sliderMidAnchorMode(sliderMidAnchorMode), sliderHead(sliderHead), sliderTail(sliderTail) {};
+    };
+}
+namespace BeatGen {
+    class BeatGenContainer { //Container class for BeatGen Objects
+        public:
+            std::string version;
+            std::vector<std::shared_ptr<BGOBJ::event>> beatGenEvents;
+            std::vector<std::shared_ptr<BGOBJ::note>> beatGenNotes;	
+            std::vector<std::shared_ptr<BGOBJ::wall>> beatGenWalls;
+            std::vector<std::shared_ptr<BGOBJ::slider>> beatGenSliders;
+            std::vector<std::shared_ptr<BGOBJ::slider>> beatGenAutoSliders;
     };
 }
 
