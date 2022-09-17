@@ -17,6 +17,13 @@ std::string readFile(std::string path)
     return content;
 }
 
+void writeFile(std::string path, std::string content)
+{
+    std::ofstream file(path);
+    file << content;
+    file.close();
+}
+
 int main()
 {
     BeatGen::BeatGenContainer BGC; // Create a BeatGenContainer
@@ -26,6 +33,7 @@ int main()
     BGC.beatGenWalls.push_back(std::make_shared<BGOBJ::wall>(0,2,BGToks::CrouchHight,5,12)); // Add a wall to the BeatGenContainer
     BGC.beatGenSliders.push_back(std::make_shared<BGOBJ::slider>(BGToks::Type::Red, BGToks::Slider::Clockwise,BGOBJ::sliderpart(1,1,BGToks::Up,1,15),BGOBJ::sliderpart(1,1,BGToks::Down,1,25))); // Add an Slider to the BeatGenContainer
     BGC.beatGenAutoSliders.push_back(std::make_shared<BGOBJ::slider>(BGToks::Type::Red, BGToks::Slider::Clockwise,BGOBJ::sliderpart(1,1,BGToks::Up,1,35),BGOBJ::sliderpart(1,1,BGToks::Down,1,45))); // Add an Slider with Blocks to the BeatGenContainer
-    std::cout << BeatGen::genJson(BGC,false); // Generate a json code from the BeatGenContainer
+    writeFile("testcomp.dat" ,BeatGen::genJson(BGC,false)); // Generate a json code from the BeatGenContainer
+    std::cout << "Done" << std::endl;
     std::cin.ignore();
 }

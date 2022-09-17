@@ -1,7 +1,9 @@
 #ifndef BPMEVENT_H_
 #define BPMEVENT_H_
 
+#include <memory>
 #include <vector>
+#include <string>
 
 namespace BGOBJ {
     class bpmEvent { //bpmEvent class
@@ -32,7 +34,7 @@ namespace BGOBJ {
     public:
         int y,x,width,height;
         float duration, beat;
-        wall(int y, int x, int width, int height, float duration,float beat) : y(y),x(x),width(width),height(height),duration(duration), beat(beat) {};
+        wall(int x, int y, int width, int height, float duration,float beat) : y(y),x(x),width(width),height(height),duration(duration), beat(beat) {};
     };
     class colorBoostEvent{ //colorBoostEvent class
     public:    
@@ -126,6 +128,27 @@ namespace BGOBJ {
         int group;
        std::vector<BGOBJ::lightRotationEventBoxContainer> eventBoxes;
         lightRotationEvent(float beat, int group, std::vector<BGOBJ::lightRotationEventBoxContainer> eventBoxes) : beat(beat), group(group), eventBoxes(eventBoxes) {};
+    };
+}
+
+namespace BeatGen {
+    class BeatGenContainer { //Container class for BeatGen Objects
+        public:
+            std::string version;
+            std::vector<std::shared_ptr<BGOBJ::basicEvent>> beatGenBasicEvents;
+            std::vector<std::shared_ptr<BGOBJ::note>> beatGenNotes;	
+            std::vector<std::shared_ptr<BGOBJ::wall>> beatGenWalls;
+            std::vector<std::shared_ptr<BGOBJ::slider>> beatGenSliders;
+            std::vector<std::shared_ptr<BGOBJ::autoSlider>> beatGenAutoSliders;
+            std::vector<std::shared_ptr<BGOBJ::burstSlider>> beatGenBurstSliders;
+            std::vector<std::shared_ptr<BGOBJ::bomb>> beatGenBombs;
+            std::vector<std::shared_ptr<BGOBJ::bpmEvent>> beatGenBpmEvents;
+            std::vector<std::shared_ptr<BGOBJ::rotationEvent>> beatGenRotationEvents;
+            std::vector<std::shared_ptr<BGOBJ::colorBoostEvent>> beatGenColorBoostEvents;
+            std::vector<std::shared_ptr<BGOBJ::lightColorEvent>> beatGenLightColorEvents;
+            std::vector<std::shared_ptr<BGOBJ::lightRotationEvent>> beatGenLightRotationEvents;
+            bool nomalCompatible;
+            BeatGenContainer(bool normalCompatible, std::string version) : nomalCompatible(normalCompatible), version(version) {}
     };
 }
 

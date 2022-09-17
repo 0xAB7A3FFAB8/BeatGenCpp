@@ -1,5 +1,5 @@
-#ifndef BEAT_GEN_H_
-#define BEAT_GEN_H_
+#ifndef BEAT_GEN_READER_H_
+#define BEAT_GEN_READER_H_
 
 #include <vector>
 #include <string>
