@@ -4,39 +4,57 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <map>
+
 
 namespace BGOBJ {
-    class bpmEvent { //bpmEvent class
+    class CustomData{
+        public:
+        int type,value;
+        float fvalue;
+        std::string name,svalue;
+        std::vector<CustomData> Data;
+        CustomData(int type,std::string name) : type(type),name(name){};
+    };
+}
+
+namespace BGOBJ {
+    class baseOBJ{
+        public:
+        std::map<std::string,std::vector<CustomData>> customData;
+    };
+
+    class bpmEvent:public baseOBJ { //bpmEvent class
         public:
         float bpm, beat;
         bpmEvent(float bpm,float beat) :bpm(bpm), beat(beat) {};
 
     };
-    class rotationEvent { //rotationEvent class
+    class rotationEvent:public baseOBJ { //rotationEvent class
         public:
         float beat,rotation;
         int early;
         rotationEvent(float beat,float rotation, int early):beat(beat),rotation(rotation),early(early){};
     };
-    class note{ //note class
+    class note:public baseOBJ{ //note class
         public:
         float beat;
         int x,y,color,direction,angle_offset;
         note(int x,int y, int color, int direction,int angle_offset,float beat): x(x), y(y), color(color), direction(direction), angle_offset(angle_offset), beat(beat){};
     };
-    class bomb{ //bomb class
+    class bomb:public baseOBJ{ //bomb class
         public:
         int x,y;
         float beat;
         bomb(int x, int y, float beat) : x(x),y(y),beat(beat) {};
     };
-    class wall{ //wall class
+    class wall:public baseOBJ{ //wall class
     public:
         int y,x,width,height;
         float duration, beat;
         wall(int x, int y, int width, int height, float duration,float beat) : y(y),x(x),width(width),height(height),duration(duration), beat(beat) {};
     };
-    class colorBoostEvent{ //colorBoostEvent class
+    class colorBoostEvent:public baseOBJ{ //colorBoostEvent class
     public:    
         float beat;
         bool on;
@@ -48,14 +66,14 @@ namespace BGOBJ {
         float controlPointLengthMultiplier, beat;
         sliderpart(int x,int y, int direction,float controlPointLengthMultiplier,float beat): x(x), y(y), direction(direction), controlPointLengthMultiplier(controlPointLengthMultiplier), beat(beat) {};
     };
-    class slider{ //Slider class
+    class slider:public baseOBJ{ //Slider class
         public:
         int color,sliderMidAnchorMode;
         BGOBJ::sliderpart sliderHead,sliderTail;
         slider(int color, int sliderMidAnchorMode, BGOBJ::sliderpart sliderHead, BGOBJ::sliderpart sliderTail) : color(color), sliderMidAnchorMode(sliderMidAnchorMode), sliderHead(sliderHead), sliderTail(sliderTail) {};
     };
 
-    class autoSlider{ //autoSlider class
+    class autoSlider:public baseOBJ{ //autoSlider class
         public:
         int color,sliderMidAnchorMode;
         BGOBJ::sliderpart sliderHead,sliderTail;
@@ -68,14 +86,14 @@ namespace BGOBJ {
         float beat;
         burstSliderpart(int x,int y, int direction,float beat): x(x), y(y), direction(direction), beat(beat) {};
     };
-    class burstSlider{ //BurstSlider class
+    class burstSlider:public baseOBJ{ //BurstSlider class
         public:
         float squish;
         int color,segmentCount;
         BGOBJ::burstSliderpart sliderHead,sliderTail;
         burstSlider(int color, int segmentCount, float squish, BGOBJ::burstSliderpart sliderHead, BGOBJ::burstSliderpart sliderTail) : color(color), segmentCount(segmentCount), squish(squish), sliderHead(sliderHead), sliderTail(sliderTail) {};
     };
-    class basicEvent{ //BasicEvent class for BeatGen
+    class basicEvent:public baseOBJ{ //BasicEvent class for BeatGen
         public:
         int type,value;
         float valuef,beat;
@@ -101,7 +119,7 @@ namespace BGOBJ {
         std::vector<BGOBJ::lightEventData> eventData;
         lightEventBoxContainer(float beatDistribution, int beatDistributionType, float brigthnessDistribution, int brigthnessDistributionType, int brigthnessDistributionAffectFirst, BGOBJ::filter filter, std::vector<BGOBJ::lightEventData> eventData) : beatDistribution(beatDistribution), brigthnessDistribution(brigthnessDistribution), beatDistributionType(beatDistributionType), brigthnessDistributionType(brigthnessDistributionType), brigthnessDistributionAffectFirst(brigthnessDistributionAffectFirst), filter(filter), eventData(eventData) {};
     };
-    class lightColorEvent{ //LightColorEvent class
+    class lightColorEvent:public baseOBJ{ //LightColorEvent class
         public:
         float beat;
         int group;
@@ -122,7 +140,7 @@ namespace BGOBJ {
         std::vector<BGOBJ::lightRotationEventData> eventData;
         lightRotationEventBoxContainer(float beatDistribution, int beatDistributionType, float rotationDistribution, int rotationDistributionType, int rotationDistributionAffectFirst, int axis, int reverseRotration,BGOBJ::filter filter, std::vector<BGOBJ::lightRotationEventData> eventData) : beatDistribution(beatDistribution), rotationDistribution(rotationDistribution), beatDistributionType(beatDistributionType), rotationDistributionType(rotationDistributionType), rotationDistributionAffectFirst(rotationDistributionAffectFirst), axis(axis), reverseRotration(reverseRotration), eventData(eventData), filter(filter) {};
     };
-    class lightRotationEvent{ //LightRotationEvent class
+    class lightRotationEvent:public baseOBJ{ //LightRotationEvent class
         public:
         float beat;
         int group;
@@ -132,7 +150,7 @@ namespace BGOBJ {
 }
 
 namespace BeatGen {
-    class BeatGenContainer { //Container class for BeatGen Objects
+    class BeatGenContainer:public BGOBJ::baseOBJ { //Container class for BeatGen Objects
         public:
             std::string version;
             std::vector<std::shared_ptr<BGOBJ::basicEvent>> beatGenBasicEvents;

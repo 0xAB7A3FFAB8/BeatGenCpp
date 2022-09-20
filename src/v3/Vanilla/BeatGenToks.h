@@ -7,7 +7,17 @@ All tokens used by BeatGen
 These tokens are used to make the code more readable
 */
 
-
+namespace BGCToks {
+    enum types {
+        INT = 0,
+        FLOAT = 1,
+        STRING = 2,
+        BOOL = 3,
+        OBJ = 4,
+        ARRAY = 5,
+        JNULL = 6
+    };
+}
 
 namespace BGToks {
     namespace Slider {

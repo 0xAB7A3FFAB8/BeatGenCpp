@@ -2,10 +2,39 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include "BeatGenToks.h"
 #ifndef LIB_JSONCPP_JSON_TOOL_H_INCLUDED
 #include "dist/jsoncpp.cpp"
 #endif
 #include "BeatGenOBJ.h"
+
+std::vector<std::string> ids;
+
+
+Json::Value genCustomData(BGOBJ::CustomData CD){
+    Json::Value root;
+    for(int i = 0; i < CD.Data.size(); i++){
+        if (CD.type == BGCToks::INT){
+            root[CD.Data[i].name] = CD.Data[i].value;
+        }else if (CD.type == BGCToks::FLOAT){
+            root[CD.Data[i].name] = CD.Data[i].fvalue;
+        }else if (CD.type == BGCToks::STRING){
+            root[CD.Data[i].name] = CD.Data[i].svalue;
+        }else if (CD.type == BGCToks::BOOL){
+            root[CD.Data[i].name] = bool(CD.Data[i].value);
+        }else if (CD.type == BGCToks::OBJ){
+            Json::Value obj;
+            obj[CD.Data[i].name] = genCustomData(CD.Data[i]);
+            root.append(obj);
+        }else if (CD.type == BGCToks::ARRAY){
+            Json::Value arr;
+            arr[CD.Data[i].name] = genCustomData(CD.Data[i]);
+            root[CD.Data[i].name] = arr;
+        }
+    }
+    return root;
+}
+
 
 std::string genJson(BeatGen::BeatGenContainer BGC ,bool Styled)
 {
@@ -51,6 +80,13 @@ std::string genJson(BeatGen::BeatGenContainer BGC ,bool Styled)
         note["c"] = BGC.beatGenNotes[i]->color;
         note["d"] = BGC.beatGenNotes[i]->direction;
         note["a"] = BGC.beatGenNotes[i]->angle_offset;
+        if (BGC.beatGenNotes[i]->customData.empty() == false) {
+            for (int e = 0; e < BGC.beatGenNotes[i]->customData.size(); e++) {
+                for (int r = 0; r < BGC.beatGenNotes[r]->customData.size(); r++) {
+                    note["customData"] = genCustomData(BGC.beatGenNotes[i]->customData[ids[e]][r]);
+                }
+            }
+        }
         root["colorNotes"].append(note);
     }
 

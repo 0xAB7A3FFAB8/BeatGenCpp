@@ -28,6 +28,7 @@ void writeFile(std::string path, std::string content)
 
 int main()
 {
+    BeatGen::ids.push_back("NE");
     BeatGen::BeatGenContainer BGC(true, "3.0.0");
     BGC = BGR::readJson(readFile("test.dat"));
     BGOBJ::note n1(0,0,0,0,0,0);
@@ -35,6 +36,8 @@ int main()
     BGOBJ::slider s1(0,0,BGOBJ::sliderpart(1,1,1,1,1),BGOBJ::sliderpart(1,1,1,1,5));
     BGOBJ::autoSlider as1(0,0,BGOBJ::sliderpart(1,1,1,1,10),BGOBJ::sliderpart(1,1,1,1,15));
 
+    n1.customData["NE"].push_back(BGOBJ::CustomData(BGCToks::INT, "x"));
+    n1.customData["NE"].back().value = 3;
 
     BGC.beatGenNotes.push_back(std::make_shared<BGOBJ::note>(n1));
     BGC.beatGenNotes.push_back(std::make_shared<BGOBJ::note>(n2));
