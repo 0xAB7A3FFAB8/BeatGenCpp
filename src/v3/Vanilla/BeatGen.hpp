@@ -1,12 +1,11 @@
 #ifndef BEATGEN_H_
 #define BEATGEN_H_
 
-#include "BeatGenOBJ.h"
-#include "BeatGen.cpp"
+#include "BeatGenOBJ.hpp"
 #include <string>
 #include <vector>
-#ifndef LIB_JSONCPP_JSON_TOOL_H_INCLUDED
-#include "dist/jsoncpp.cpp"
+#ifndef JSON_AMALGAMATED_H_INCLUDED
+#include "dist/json/json.h"
 #endif
 
 namespace BeatGen {

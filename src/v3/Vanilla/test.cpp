@@ -1,8 +1,9 @@
-#include "BeatGen.h"
-#include "BeatGenReader.h"
+#include "BeatGen.hpp"
+#include "BeatGenReader.hpp"
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include "BeatGenToks.hpp"
 
 
 std::string readFile(std::string path)
