@@ -2,7 +2,7 @@
 #define BEATGEN_READER_H_
 
 #include <string>
-#include "BeatGenOBJ.hpp"
+#include "BeatGenOBJ.h"
 
 
 namespace BGR {

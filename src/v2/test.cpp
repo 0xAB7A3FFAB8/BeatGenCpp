@@ -1,8 +1,10 @@
-#include "BeatGenToks.h" //token classes (for Readeble Code)
-#include "BeatGen.h" //container class and Json Generator
+#include "BeatGenOBJ.h"
+#include "BeatGen.h"
 #include "BeatGenReader.h"
 #include <iostream>
+#include <vector>
 #include <fstream>
+#include "BeatGenToks.h"
 
 std::string readFile(std::string path)
 {

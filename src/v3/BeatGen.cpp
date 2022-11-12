@@ -2,11 +2,10 @@
 #include <vector>
 #include <string>
 #include <memory>
-#include "BeatGenToks.hpp"
+#include "BeatGenToks.h"
 #include "include/json/writer.h"
 #include "include/json/value.h"
-#include "BeatGenOBJ.hpp"
-#include "BeatGen.hpp"
+#include "BeatGenOBJ.h"
 
 
 

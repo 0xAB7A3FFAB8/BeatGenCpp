@@ -5,8 +5,8 @@
 #include <memory.h>
 #include "include/json/reader.h"
 #include "include/json/value.h"
-#include "BeatGenOBJ.hpp"
-#include "BeatGenReader.hpp"
+#include "BeatGenOBJ.h"
+#include "BeatGenReader.h"
 
 namespace BGR {
     BeatGen::BeatGenContainer readJson(std::string json){

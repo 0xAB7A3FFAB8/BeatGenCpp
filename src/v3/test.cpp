@@ -1,9 +1,9 @@
-#include "BeatGen.hpp"
-#include "BeatGenReader.hpp"
+#include "BeatGen.h"
+#include "BeatGenReader.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "BeatGenToks.hpp"
+#include "BeatGenToks.h"
 #include <chrono>
 
 

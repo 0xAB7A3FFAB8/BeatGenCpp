@@ -1,10 +1,10 @@
 #ifndef BEATGEN_H_
 #define BEATGEN_H_
 
-#include "BeatGenOBJ.hpp"
+#include "BeatGenOBJ.h"
 #include <string>
 #include <vector>
-#include "include/json/writer.h"
+#include "include/json/value.h"
 
 namespace BeatGen {
     std::string genJson(BeatGenContainer BGC ,bool Styled);
