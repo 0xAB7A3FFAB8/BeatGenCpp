@@ -5,6 +5,7 @@ This is in early developement so bugs might occur.
 
 Currently generation is only mostly implemented for the v 2.x format (including sliders [But They are Kinda Buggy] ) but v 3.x support is planned.
 
+_(the json is generated using jsoncpp)_
 
 ## Plans for the Future
 
