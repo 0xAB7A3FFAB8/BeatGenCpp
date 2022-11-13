@@ -153,18 +153,18 @@ namespace BeatGen {
     class BeatGenContainer:public BGOBJ::baseOBJ { //Container class for BeatGen Objects
         public:
             std::string version;
-            std::vector<std::shared_ptr<BGOBJ::basicEvent>> beatGenBasicEvents;
-            std::vector<std::shared_ptr<BGOBJ::note>> beatGenNotes;	
-            std::vector<std::shared_ptr<BGOBJ::wall>> beatGenWalls;
-            std::vector<std::shared_ptr<BGOBJ::slider>> beatGenSliders;
-            std::vector<std::shared_ptr<BGOBJ::autoSlider>> beatGenAutoSliders;
-            std::vector<std::shared_ptr<BGOBJ::burstSlider>> beatGenBurstSliders;
-            std::vector<std::shared_ptr<BGOBJ::bomb>> beatGenBombs;
-            std::vector<std::shared_ptr<BGOBJ::bpmEvent>> beatGenBpmEvents;
-            std::vector<std::shared_ptr<BGOBJ::rotationEvent>> beatGenRotationEvents;
-            std::vector<std::shared_ptr<BGOBJ::colorBoostEvent>> beatGenColorBoostEvents;
-            std::vector<std::shared_ptr<BGOBJ::lightColorEvent>> beatGenLightColorEvents;
-            std::vector<std::shared_ptr<BGOBJ::lightRotationEvent>> beatGenLightRotationEvents;
+            std::vector<BGOBJ::basicEvent> beatGenBasicEvents;
+            std::vector<BGOBJ::note> beatGenNotes;	
+            std::vector<BGOBJ::wall> beatGenWalls;
+            std::vector<BGOBJ::slider> beatGenSliders;
+            std::vector<BGOBJ::autoSlider> beatGenAutoSliders;
+            std::vector<BGOBJ::burstSlider> beatGenBurstSliders;
+            std::vector<BGOBJ::bomb> beatGenBombs;
+            std::vector<BGOBJ::bpmEvent> beatGenBpmEvents;
+            std::vector<BGOBJ::rotationEvent> beatGenRotationEvents;
+            std::vector<BGOBJ::colorBoostEvent> beatGenColorBoostEvents;
+            std::vector<BGOBJ::lightColorEvent> beatGenLightColorEvents;
+            std::vector<BGOBJ::lightRotationEvent> beatGenLightRotationEvents;
             bool nomalCompatible;
             BeatGenContainer(bool normalCompatible, std::string version) : nomalCompatible(normalCompatible), version(version) {}
     };
