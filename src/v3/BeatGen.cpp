@@ -13,6 +13,8 @@ namespace BeatGen {
 
     std::vector<std::string> ids;
     
+    
+
     Json::Value genCustomData(BGOBJ::CustomData CD){
         Json::Value root;
         for(int i = 0; i < CD.Data.size(); i++){
