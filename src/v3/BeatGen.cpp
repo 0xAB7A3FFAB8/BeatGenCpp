@@ -38,7 +38,7 @@ namespace BeatGen {
     }
     */
 
-    std::string genJson(BeatGen::BeatGenContainer BGC ,bool Styled)
+    std::string genJson(BeatGen::BeatGenContainer& BGC ,bool Styled)
     {
         Json::Value root;
 

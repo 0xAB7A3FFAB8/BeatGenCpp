@@ -8,7 +8,7 @@
 
 namespace BeatGen
 {
-    std::string genJson(BeatGen::BeatGenContainer BGC,bool FastWrite)
+    std::string genJson(BeatGen::BeatGenContainer& BGC,bool FastWrite)
     {
         Json::Value root;
         //root.append("_version");
