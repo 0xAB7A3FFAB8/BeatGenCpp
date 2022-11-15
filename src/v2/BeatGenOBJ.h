@@ -41,11 +41,11 @@ namespace BeatGen {
     class BeatGenContainer { //Container class for BeatGen Objects
         public:
             std::string version;
-            std::vector<std::shared_ptr<BGOBJ::event>> beatGenEvents;
-            std::vector<std::shared_ptr<BGOBJ::note>> beatGenNotes;	
-            std::vector<std::shared_ptr<BGOBJ::wall>> beatGenWalls;
-            std::vector<std::shared_ptr<BGOBJ::slider>> beatGenSliders;
-            std::vector<std::shared_ptr<BGOBJ::slider>> beatGenAutoSliders;
+            std::vector<BGOBJ::event> beatGenEvents;
+            std::vector<BGOBJ::note> beatGenNotes;	
+            std::vector<BGOBJ::wall> beatGenWalls;
+            std::vector<BGOBJ::slider> beatGenSliders;
+            std::vector<BGOBJ::slider> beatGenAutoSliders;
     };
 }
 

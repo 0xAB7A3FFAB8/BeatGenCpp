@@ -10,7 +10,7 @@
 
 
 namespace BeatGen {
-
+    /*
     std::vector<std::string> ids;
     
     Json::Value genCustomData(BGOBJ::CustomData CD){
@@ -36,7 +36,7 @@ namespace BeatGen {
         }
         return root;
     }
-
+    */
 
     std::string genJson(BeatGen::BeatGenContainer BGC ,bool Styled)
     {
@@ -82,6 +82,7 @@ namespace BeatGen {
             note["c"] = BGC.beatGenNotes[i].color;
             note["d"] = BGC.beatGenNotes[i].direction;
             note["a"] = BGC.beatGenNotes[i].angle_offset;
+            /*
             if (BGC.beatGenNotes[i].customData.empty() == false) {
                 for (int e = 0; e < BGC.beatGenNotes[i].customData.size(); e++) {
                     for (int r = 0; r < BGC.beatGenNotes[r].customData.size(); r++) {
@@ -89,6 +90,7 @@ namespace BeatGen {
                     }
                 }
             }
+            */
             root["colorNotes"].append(note);
         }
 
