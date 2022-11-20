@@ -6,7 +6,7 @@
 #include <string>
 #include <map>
 
-
+/*
 namespace BGOBJ {
     class CustomData{
         public:
@@ -17,13 +17,14 @@ namespace BGOBJ {
         CustomData(int type,std::string name) : type(type),name(name){};
     };
 }
-
+*/
 namespace BGOBJ {
+    
     class baseOBJ{
         public:
-        std::map<std::string,std::vector<CustomData>> customData;
+        //std::map<std::string,std::vector<CustomData>> customData;
     };
-
+    
     class bpmEvent:public baseOBJ { //bpmEvent class
         public:
         float bpm, beat;
