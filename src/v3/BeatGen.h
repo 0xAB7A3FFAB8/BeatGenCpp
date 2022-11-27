@@ -4,10 +4,9 @@
 #include "BeatGenOBJ.h"
 #include <string>
 #include <vector>
-#include "include/json/value.h"
 
 namespace BeatGen {
-    std::string genJson(BeatGenContainer& BGC ,bool Styled);
+    std::string genJson(BeatGenContainer& BGC ,bool Styled); //this Function Generates the json of an BGC object, when the Styled flag is true it will create an stilized json output
 
     //Json::Value genCustomDatan(BGOBJ::CustomData CD);
 

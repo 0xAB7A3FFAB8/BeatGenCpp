@@ -4,7 +4,7 @@
 #include "BeatGenOBJ.h"
 
 namespace BeatGen {
-    std::string genJson(BeatGenContainer& BGC,bool FastWrite);
+    std::string genJson(BeatGenContainer& BGC,bool FastWrite); // this function creates an BGC object based on an given String in Json format.
 }
 
 #endif

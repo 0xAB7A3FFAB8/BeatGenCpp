@@ -10,6 +10,7 @@
 
 namespace BGR {
     BeatGen::BeatGenContainer readJson(std::string json){
+
         Json::Value root;
         Json::Reader reader;
         bool parsingSuccessful = reader.parse(json, root);

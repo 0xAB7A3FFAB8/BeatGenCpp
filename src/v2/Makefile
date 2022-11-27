@@ -29,7 +29,7 @@ genso:
 	rm *.o
 
 mvso:
-	sudo mv libV3BeatGen.so /usr/lib
+	sudo mv libV3BeatGen.so /../../
 
 testso:
 	gcc -o out test.cpp -lV3BeatGen -L. -fPIC $(GCCFLAGS) -lstdc++

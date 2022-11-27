@@ -6,23 +6,23 @@
 #include <string>
 #include <map>
 
-/*
+
 namespace BGOBJ {
-    class CustomData{
+    class BGCustomData{
         public:
         int type,value;
         float fvalue;
         std::string name,svalue;
-        std::vector<CustomData> Data;
-        CustomData(int type,std::string name) : type(type),name(name){};
+        std::vector<BGCustomData> Data;
+        BGCustomData(int type,std::string name) : type(type),name(name){};
     };
 }
-*/
+
 namespace BGOBJ {
     
     class baseOBJ{
         public:
-        //std::map<std::string,std::vector<CustomData>> customData;
+        std::vector<BGCustomData> CustomData;
     };
     
     class bpmEvent:public baseOBJ { //bpmEvent class
