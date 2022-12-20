@@ -8,6 +8,8 @@
 #include "BeatGenOBJ.h"
 #include <algorithm>
 #include <execution>
+#include <stdexcept>
+
 
 namespace BeatGen {
     /*
@@ -311,7 +313,7 @@ namespace BeatGen {
         std::for_each(std::execution::par, BGC.beatGenLightRotationEvents.begin(), BGC.beatGenLightRotationEvents.end(), [&root](BGOBJ::lightRotationEvent& lightRotationEvent) {
             root["lightRotationEventsBoxGroup"].append(genLightRotationEvent(lightRotationEvent));
         });
-
+    
         if(!Styled){
             Json::FastWriter writer;
             return writer.write(root);
@@ -319,6 +321,8 @@ namespace BeatGen {
             Json::StyledWriter writer;
             return writer.write(root);
         }
-        return "Something went wrong while generating the json";
+    
+        throw std::runtime_error("Error: Somthing went wrong when generating json!");
+        return "";
     }
 }
