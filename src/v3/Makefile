@@ -1,38 +1,39 @@
-GCCFLAGS=
+COMPFLAGS=-lstdc++ -std=c++17 -O3
+COMPILER=clang++
 
 output: test.o BeatGen.o BeatGenReader.o jsoncpp.o
-	gcc -o out jsoncpp.o BeatGen.o BeatGenReader.o test.o -fPIC $(GCCFLAGS) -lstdc++
+	$(COMPILER) $(COMPFLAGS) jsoncpp.o BeatGen.o BeatGenReader.o test.o  
 
 test.o: test.cpp BeatGen.h BeatGenReader.h BeatGenOBJ.h BeatGenToks.h
-	gcc -c test.cpp $(GCCFLAGS) -fPIC -lstdc++
+	$(COMPILER) -c $(COMPFLAGS)  test.cpp 
 
 BeatGen.o: BeatGen.cpp BeatGen.h
-	gcc -c BeatGen.cpp $(GCCFLAGS) -fPIC -lstdc++
+	$(COMPILER) -c $(COMPFLAGS) BeatGen.cpp  
 
 BeatGenReader.o: BeatGenReader.cpp BeatGenReader.h
-	gcc -c BeatGenReader.cpp $(GCCFLAGS) -fPIC -lstdc++
+	$(COMPILER) -c $(COMPFLAGS) BeatGenReader.cpp  
 
 jsoncpp.o: ./dist/jsoncpp.cpp
-	gcc -c ./dist/jsoncpp.cpp $(GCCFLAGS) -fPIC -lstdc++
+	$(COMPILER) -c $(COMPFLAGS) ./dist/jsoncpp.cpp  
 
 clean:
 	rm *.o
 
 clear:
-	rm *.o out
+	rm *.o a.out
 
 genso:
-	gcc -c BeatGenReader.cpp -fPIC $(GCCFLAGS) -lstdc++
-	gcc -c BeatGen.cpp -fPIC $(GCCFLAGS) -lstdc++
-	gcc -c ./dist/jsoncpp.cpp -fPIC $(GCCFLAGS) -lstdc++
-	gcc -shared -o libV3BeatGen.so BeatGen.o BeatGenReader.o jsoncpp.o -fPIC $(GCCFLAGS) -lstdc++
+	$(COMPILER) -c BeatGenReader.cpp -fPIC $(COMPFLAGS) 
+	$(COMPILER) -c BeatGen.cpp -fPIC $(COMPFLAGS) 
+	$(COMPILER) -c ./dist/jsoncpp.cpp -fPIC $(COMPFLAGS) 
+	$(COMPILER) -shared -o libV3BeatGen.so BeatGen.o BeatGenReader.o jsoncpp.o -fPIC $(COMPFLAGS) 
 	rm *.o
 
 mvso:
 	sudo mv libV3BeatGen.so /../../
 
 testso:
-	gcc -o out test.cpp -lV3BeatGen -L. -fPIC $(GCCFLAGS) -lstdc++
+	$(COMPILER) -o out test.cpp -lV3BeatGen -L. -fPIC $(COMPFLAGS) 
 
 getlines:
 	cat test.cpp BeatGen.cpp BeatGenReader.cpp BeatGenOBJ.h BeatGenToks.h BeatGen.h BeatGenReader.h | wc -l
